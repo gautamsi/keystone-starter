@@ -14,12 +14,12 @@ block content
 				
 				.row.gallery-images
 					if gallery.heroImage.exists
-						.col-sm-4.col-md-4.gallery-image: img(src=gallery._.heroImage.limit(680,680)).img-rounded
-						.col-sm-8.col-md-8: .row
+						.col-md-4.col-lg-4.gallery-image: img(src=gallery._.heroImage.limit(680,680)).img-rounded
+						.col-md-8.col-lg-8: .row
 							each image in gallery.images
-								.col-xs-4.col-sm-4.col-md-3.gallery-image: img(src=image.limit(300,300)).img-rounded
+								.col-4.col-md-4.col-lg-3.gallery-image: img(src=image.limit(300,300)).img-rounded
 					else
 						each image in gallery.images
-							.col-xs-6.col-sm-4.col-md-3.gallery-image: img(src=image.limit(300,300)).img-rounded
+							.col-6.col-md-4.col-lg-3.gallery-image: img(src=image.limit(300,300)).img-rounded
 		else
 			h3.text-muted There are no image galleries yet.

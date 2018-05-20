@@ -13,7 +13,6 @@ html
 		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
 
 		link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
-        
 		//- Customise the stylesheet for your site by editing /public/styles/site.sass
 		link(href="/styles/site.css", rel="stylesheet")
 
@@ -43,26 +42,22 @@ html
 			//- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
 			//- ... or completely change this header to suit your design.
 
-			div(role="navigation").navbar.navbar-default
-				.container-fluid
-					.navbar-header
-						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-							span.sr-only Toggle navigation
-							span.icon-bar
-							span.icon-bar
-							span.icon-bar
-						a.navbar-brand(href='/') keystone-starter
-					.collapse.navbar-collapse
-						ul.nav.navbar-nav.navbar-left
-							each link in navLinks
-								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
-						ul.nav.navbar-nav.navbar-right
-							if user
-								if user.canAccessKeystone
-									li: a(href='/keystone') Open Keystone
-								li: a(href='/keystone/signout') Sign Out
-							else
-								li: a(href='/keystone/signin') Sign In
+			div(role="navigation").navbar.navbar-light.bg-light.navbar-expand-md
+				button(type="button" data-toggle="collapse" data-target=".navbar-collapse").navbar-toggler
+					span.sr-only Toggle Navigation
+					!= "&#x2630;"
+				a.navbar-brand(href='/') keystone-starter
+				.collapse.navbar-collapse
+					ul.nav.navbar-nav.navbar-left.ml-auto
+						each link in navLinks
+							li(class=(section == link.key ? 'active' : null)).nav-item: a.nav-link(href=link.href)= link.label
+					ul.nav.navbar-nav.navbar-right.ml-auto
+						if user
+							if user.canAccessKeystone
+								li.nav-item: a(href='/keystone').nav-link Open Keystone
+							li.nav-item: a(href='/keystone/signout').nav-link Sign Out
+						else
+							li.nav-item: a(href='/keystone/signin').nav-link Sign In
 
 		//- BODY
 		#body
@@ -100,7 +95,6 @@ html
 		//- them specifically here, instead of bootstrap-3.3.5.min.js
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js", integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", crossorigin="anonymous")
 		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js", integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin="anonymous")
-
 
 		//- The KeystoneJS Content Editor provides support for ks-editable data attributes,
 		//- which generate links to edit content for users who can access Keystone

@@ -28,7 +28,7 @@ block intro
 
 block content
 	.container: .row
-		.col-sm-8.col-md-9
+		.col-md-8.col-lg-9
 			if filters.category && !data.category
 				h3.text-muted Invalid Category.
 			else
@@ -50,16 +50,16 @@ block content
 					if data.posts.totalPages > 1
 						ul.pagination
 							if data.posts.previous
-								li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
+								li.page-item: a(href='?page=' + data.posts.previous).page-link: span.glyphicon.glyphicon-chevron-left
 							else
-								li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
+								li.page-item.disabled: a(href='?page=' + 1).page-link: span.glyphicon.glyphicon-chevron-left
 							each p, i in data.posts.pages
-								li(class=data.posts.currentPage == p ? 'active' : null)
-									a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+								li(class=data.posts.currentPage == p ? 'active' : null).page-item
+									a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p )).page-link= p
 							if data.posts.next
-								li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
+								li.page-item: a(href='?page=' + data.posts.next).page-link: span.glyphicon.glyphicon-chevron-right
 							else
-								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
+								li.page-item.disabled: a(href='?page=' + data.posts.totalPages).page-link: span.entypo.glyphicon.glyphicon-chevron-right
 				else
 					if data.category
 						h3.text-muted There are no posts in the category #{data.category.name}.
@@ -67,7 +67,7 @@ block content
 						h3.text-muted There are no posts yet.
 		
 		if data.categories.length
-			.col-sm-4.col-md-3
+			.col-md-4.col-lg-3
 				h2 Categories
 				.list-group(style='margin-top: 70px;')
 					a(href='/blog', class=!data.category ? 'active' : false).list-group-item All Categories
