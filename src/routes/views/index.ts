@@ -10,5 +10,5 @@ export = function (req, res) {
       locals.section = 'home';
 
       // Render the view
-      view.render('index');
+      view.render('site/index');
 };

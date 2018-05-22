@@ -12,6 +12,6 @@ export = function (req, res) {
       view.query('galleries', keystone.list('Gallery').model.find().sort('-publishedDate'));
 
       // Render the view
-      view.render('gallery');
+      view.render('site/gallery');
 
 };

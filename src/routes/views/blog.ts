@@ -79,5 +79,5 @@ export = function (req, res) {
       });
 
       // Render the view
-      view.render('blog');
+      view.render('site/blog');
 };

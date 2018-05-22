@@ -1,4 +1,4 @@
-extends ../layouts/default
+extends ../../layouts/default
 
 mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
@@ -28,7 +28,7 @@ block intro
 
 block content
 	.container: .row
-		.col-md-8.col-lg-9
+		.col-sm-8.col-md-9
 			if filters.category && !data.category
 				h3.text-muted Invalid Category.
 			else
@@ -50,16 +50,16 @@ block content
 					if data.posts.totalPages > 1
 						ul.pagination
 							if data.posts.previous
-								li.page-item: a(href='?page=' + data.posts.previous).page-link: span.glyphicon.glyphicon-chevron-left
+								li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
 							else
-								li.page-item.disabled: a(href='?page=' + 1).page-link: span.glyphicon.glyphicon-chevron-left
+								li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
 							each p, i in data.posts.pages
-								li(class=data.posts.currentPage == p ? 'active' : null).page-item
-									a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p )).page-link= p
+								li(class=data.posts.currentPage == p ? 'active' : null)
+									a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
 							if data.posts.next
-								li.page-item: a(href='?page=' + data.posts.next).page-link: span.glyphicon.glyphicon-chevron-right
+								li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
 							else
-								li.page-item.disabled: a(href='?page=' + data.posts.totalPages).page-link: span.entypo.glyphicon.glyphicon-chevron-right
+								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				else
 					if data.category
 						h3.text-muted There are no posts in the category #{data.category.name}.
@@ -67,7 +67,7 @@ block content
 						h3.text-muted There are no posts yet.
 		
 		if data.categories.length
-			.col-md-4.col-lg-3
+			.col-sm-4.col-md-3
 				h2 Categories
 				.list-group(style='margin-top: 70px;')
 					a(href='/blog', class=!data.category ? 'active' : false).list-group-item All Categories

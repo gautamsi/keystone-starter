@@ -8,7 +8,7 @@ export = function (req, res) {
 
       // Set locals
       locals.section = 'contact';
-      locals.enquiryTypes = Enquiry.fields["enquiryType"].ops;
+      locals.enquiryTypes = Enquiry.fields['enquiryType'].ops;
       locals.formData = req.body || {};
       locals.validationErrors = {};
       locals.enquirySubmitted = false;
@@ -33,5 +33,5 @@ export = function (req, res) {
             });
       });
 
-      view.render('contact');
+      view.render('site/contact');
 };

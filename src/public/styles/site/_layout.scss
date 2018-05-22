@@ -1,3 +1,37 @@
+//
+// Layout
+// ==============================
+
+
+// Base
+
+html {
+	@include size( 100% );
+}
+body {
+	height: 100%;
+	font-weight: $font-weight-base;
+}
+
+// Containers
+// ------------------------------
+.container-xs,
+.container-sm,
+.container-md {
+	// @include container-fixed();
+	@include make-container();
+}
+
+$screen-sm-min: media-breakpoint-up('sm');
+$screen-md-min: media-breakpoint-up('md');
+
+@media (min-width: $screen-sm-min) {
+	.container-xs { width: 600px; }
+	.container-sm { width: $screen-sm-min - $grid-gutter-width; }
+	.container-md { max-width: $screen-md-min - $grid-gutter-width; }
+}
+
+
 #header {
 	margin-top: 30px;
 }

@@ -42,5 +42,5 @@ export = function (req, res) {
       });
 
       // Render the view
-      view.render('post');
+      view.render('site/post');
 };

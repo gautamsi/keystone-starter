@@ -1,0 +1,17 @@
+//- HEADER
+div(role="navigation").navbar.navbar-light.bg-light.navbar-expand-md
+	button(type="button" data-toggle="collapse" data-target=".navbar-collapse").navbar-toggler
+		span.sr-only Toggle Navigation
+		!= "&#x2630;"
+	a.navbar-brand(href='/') keystone-starter
+	.collapse.navbar-collapse
+		ul.nav.navbar-nav.navbar-left.ml-auto
+			each link in navLinks
+				li(class=(section == link.key ? 'active' : null)).nav-item: a.nav-link(href=link.href)= link.label
+		ul.nav.navbar-nav.navbar-right.ml-auto
+			if user
+				if user.canAccessKeystone
+					li.nav-item: a(href='/keystone').nav-link Open Keystone
+				li.nav-item: a(href='/signout').nav-link Sign Out
+			else
+				li.nav-item: a(href='/signin').nav-link Sign In
