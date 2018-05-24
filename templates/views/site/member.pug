@@ -1,7 +1,7 @@
 extends ../../layouts/default
 
 block content
-	.container-sm
+	.container
 		if !member.isPublic
 			.lead.text-center
 				.h2.mb-0.text-muted: span.entypo.entypo-user
@@ -11,7 +11,7 @@ block content
 			- var twitterUsername = member.twitterUsername || (member.twitter ? member.twitter.replace('@', ''): '');
 			- var githubUsername = member.githubUsername || (member.github ? member.github.replace('@', '') : '');
 			.page-intro
-				.text-left: a(href='/members').text-muted &larr; back to all members
+				.text-left: a(href='/').text-muted &larr; back to Home
 				//- hr
 				//- code=JSON.stringify(member)
 			.member.member--profile
