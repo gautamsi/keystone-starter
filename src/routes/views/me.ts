@@ -11,7 +11,7 @@ export = function (req, res) {
         locals = res.locals;
 
     locals.section = 'me';
-    locals.page.title = 'Settings - SydJS';
+    locals.page.title = 'Settings - keystone-starter';
 
     // view.query("nextMeetup",
     //     Meetup.model.findOne()

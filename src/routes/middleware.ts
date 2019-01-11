@@ -32,7 +32,7 @@ export const initLocals = function (req, res, next) {
     locals.basedir = keystone.get('basedir');
 
     locals.page = {
-        title: 'SydJS',
+        title: 'keystone-starter',
         path: req.url.split('?')[0] // strip the query - handy for redirecting back to the page
     };
 

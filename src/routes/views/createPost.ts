@@ -7,7 +7,7 @@ export = function (req, res) {
         locals = res.locals;
 
     locals.section = 'me';
-    locals.page.title = 'Create a blog post - SydJS';
+    locals.page.title = 'Create a blog post - keystone-starter';
 
     view.on('post', { action: 'create-post' }, function (next) {
 

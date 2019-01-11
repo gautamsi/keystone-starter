@@ -14,17 +14,18 @@ keystone.init(<any>{
     'brand': 'keystone-starter',
 
     'sass': 'public',
- 'static': 'public',
+    'static': 'public',
     'favicon': 'public/favicon.ico',
     'views': '../templates/views',
     'view engine': 'pug',
 
-    'emails': '../templates/emails',
+    // 'emails': '../templates/emails',
 
     'auto update': true,
     'session': true,
     'auth': true,
     'user model': 'User',
+    'cookie secret': process.env.COOKIE_SECRET || 'keystone-starter',
 });
 
 // Load your project's Models

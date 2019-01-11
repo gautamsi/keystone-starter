@@ -12,7 +12,7 @@ const credentials = {
     profileFields: []
 };
 
-if (process.env.FACEBOOK_API >= 2.4) {
+if (Number(process.env.FACEBOOK_API) >= 2.4) {
     credentials.profileFields = ['id', 'birthday', 'email', 'first_name', 'gender', 'last_name', 'displayName'];
 }
 

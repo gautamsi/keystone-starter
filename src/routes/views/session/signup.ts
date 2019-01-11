@@ -21,7 +21,7 @@ export = function (req, res) {
 
                 if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
                     req.flash('error', 'Please enter a name, email and password.');
-                    return cb(true);
+                    return cb(<any>true);
                 }
 
                 return cb();
@@ -34,7 +34,7 @@ export = function (req, res) {
 
                     if (err || user) {
                         req.flash('error', 'User already exists with that email address.');
-                        return cb(true);
+                        return cb(<any>true);
                     }
 
                     return cb();

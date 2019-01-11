@@ -1,4 +1,5 @@
 import * as keystone from 'keystone';
+import * as Email from 'keystone-email';
 import * as async from 'async';
 
 // const Meetup = keystone.list("Meetup");
@@ -72,7 +73,7 @@ export = function (req, res) {
     });
 
 
-    // Notify all SydJS subscribers
+    // Notify all keystone-starter subscribers
 
     view.on('post', { action: 'notify.subscriber' }, function (next) {
         if (!locals.subscribers) {
@@ -80,16 +81,18 @@ export = function (req, res) {
             return next();
         } else {
             async.each(locals.subscribers, function (subscriber: any, doneSubscriber) {
-                new keystone.Email('member-notification').send({
+                new Email('member-notification', { transport: 'mandrill', engine: 'pug', root: 'templates/emails' }).send({
                     subscriber: subscriber,
-                    subject: req.body.subscriber_email_subject || 'Notification from SydJS',
                     content: req.body.subscriber_email_content,
                     link_label: req.body.subscriber_email_link_label,
                     link_url: req.body.subscriber_email_link_url,
+                    host: 'http://www.keystone-starter.com',
+                }, {
+                    subject: req.body.subscriber_email_subject || 'Notification from keystone-starter',
                     to: subscriber.email,
                     from: {
-                        name: 'SydJS',
-                        email: 'hello@sydjs.com'
+                        name: 'keystone-starter',
+                        email: 'hello@keystone-starter.com'
                     }
                 }, doneSubscriber);
             }, function (err) {
